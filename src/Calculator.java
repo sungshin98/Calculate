@@ -109,52 +109,7 @@ public class Calculator extends JFrame {
     }
 
     private String processInput(String inputText) {
-        if (isVector(inputText)) {
-            return processVectorCalculation(inputText);
-        } else {
-            return Double.toString(calculate(inputText));
-        }
-    }
-
-    private boolean isVector(String input) {
-        return input.matches("\\[(-?\\d+(\\.\\d+)?(,\\s*-?\\d+(\\.\\d+)?){2})\\]");
-    }
-
-    private String processVectorCalculation(String inputText) {
-        String[] parts = inputText.split("\\s*(?=[+\\-])\\s*");
-        String vector1Str = parts[0].trim();
-        String vector2Str = parts[1].substring(1).trim(); // Remove the operator (+ or -)
-
-        double[] vector1 = parseVector(vector1Str);
-        double[] vector2 = parseVector(vector2Str);
-
-        double[] result = new double[3];
-
-        if (inputText.contains("+")) {
-            for (int i = 0; i < 3; i++) {
-                result[i] = vector1[i] + vector2[i];
-            }
-        } else if (inputText.contains("-")) {
-            for (int i = 0; i < 3; i++) {
-                result[i] = vector1[i] - vector2[i];
-            }
-        }
-
-        return formatVector(result);
-    }
-
-    private double[] parseVector(String vectorStr) {
-        Matcher matcher = Pattern.compile("-?\\d+(\\.\\d+)?").matcher(vectorStr);
-        double[] vector = new double[3];
-        int index = 0;
-        while (matcher.find()) {
-            vector[index++] = Double.parseDouble(matcher.group());
-        }
-        return vector;
-    }
-
-    private String formatVector(double[] vector) {
-        return String.format("[%.2f, %.2f, %.2f]", vector[0], vector[1], vector[2]);
+        return Double.toString(calculate(inputText));
     }
 
     private void fullTextParsing(String inputText) {
