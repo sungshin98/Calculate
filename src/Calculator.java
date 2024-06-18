@@ -91,7 +91,7 @@ public class Calculator extends JFrame {
                 num = "";
             } else if (operation.equals("Mat")) {
                 // MatrixCalc 클래스를 호출하여 실행
-                new MatrixCalc_old();
+                new MatrixCalc();
             } else if (operation.equals("Null")) {
                 // 아무 일도 하지 않음
                 return;
